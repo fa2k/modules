@@ -3,7 +3,6 @@ process DEEPVARIANT_VCFSTATSREPORT {
     label 'process_single'
 
     // FIXME Conda is not supported at the moment
-    // https://github.com/bioconda/bioconda-recipes/pull/45214#issuecomment-1890937836
     // BUG https://github.com/nf-core/modules/issues/1754
     // BUG https://github.com/bioconda/bioconda-recipes/issues/30310
     container "docker.io/google/deepvariant:1.8.0"
@@ -25,7 +24,6 @@ process DEEPVARIANT_VCFSTATSREPORT {
     }
     def args = task.ext.args ?: ''
     prefix = task.ext.prefix ?: "${meta.id}"
-
     """
     /opt/deepvariant/bin/vcf_stats_report \\
         --input_vcf=${vcf} \\
